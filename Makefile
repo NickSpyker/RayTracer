@@ -29,6 +29,3 @@ fclean: clean
 	@$(RM) -rf $(BIN)
 
 re: fclean all
-
-docs:
-	@doxygen Doxyfile
