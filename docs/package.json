@@ -1,0 +1,23 @@
+{
+  "name": "raytracer",
+  "version": "0.0.1",
+  "description": "make image with raytracer in cpp",
+  "main": "index.js",
+  "authors": {
+    "name": "",
+    "email": ""
+  },
+  "repository": "/raytracer",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src",
+    "serve": "http-server src/.vuepress/dist"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

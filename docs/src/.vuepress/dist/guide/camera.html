@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Configuration de la caméra | Raytracer Docs</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="make image with raytracer in cpp">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.1a8e0fbc.css" as="style"><link rel="preload" href="/assets/js/app.96ee69fa.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/8.7a6cbfc6.js" as="script"><link rel="prefetch" href="/assets/js/10.d4b00fef.js"><link rel="prefetch" href="/assets/js/11.ab927e94.js"><link rel="prefetch" href="/assets/js/12.9f856f5c.js"><link rel="prefetch" href="/assets/js/13.17f845f1.js"><link rel="prefetch" href="/assets/js/14.b4028389.js"><link rel="prefetch" href="/assets/js/3.29ddc053.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.2d0a63f8.js"><link rel="prefetch" href="/assets/js/7.75c9fb29.js"><link rel="prefetch" href="/assets/js/9.ef5a4316.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1a8e0fbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Raytracer Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/image.html" class="sidebar-link">Configuration de l'image</a></li><li><a href="/guide/camera.html" aria-current="page" class="active sidebar-link">Configuration de la caméra</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/camera.html#proprietes" class="sidebar-link">Propriétés</a></li><li class="sidebar-sub-header"><a href="/guide/camera.html#exemple-de-configuration" class="sidebar-link">Exemple de configuration</a></li></ul></li><li><a href="/guide/textures.html" class="sidebar-link">Configuration des textures</a></li><li><a href="/guide/materials.html" class="sidebar-link">Configuration des matériaux</a></li><li><a href="/guide/primitives.html" class="sidebar-link">Configuration de la scène (Primitives)</a></li><li><a href="/guide/createPrimitive.html" class="sidebar-link">Création d'un objet primitif</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="configuration-de-la-camera"><a href="#configuration-de-la-camera" class="header-anchor">#</a> Configuration de la caméra</h1> <p>La caméra détermine la façon dont la scène est vue et rendue en image. Cette section décrit les propriétés de la caméra qui peuvent être configurées dans le fichier de configuration.</p> <h2 id="proprietes"><a href="#proprietes" class="header-anchor">#</a> Propriétés</h2> <ul><li><code>aspectRatio</code> : Le rapport hauteur/largeur de l'image. Par défaut, il est défini à <code>1.0</code>.</li> <li><code>lookFrom</code> : La position de la caméra dans l'espace 3D. Elle est définie par un vecteur de coordonnées <code>x</code>, <code>y</code> et <code>z</code>. Par défaut, elle est définie à <code>{ x = 278.0; y = 278.0; z = -800.0; }</code>.</li> <li><code>lookAt</code> : Le point vers lequel la caméra est dirigée. Il est également défini par un vecteur de coordonnées <code>x</code>, <code>y</code> et <code>z</code>. Par défaut, il est défini à <code>{ x = 278.0; y = 278.0; z = 0.0; }</code>.</li> <li><code>fov</code> : Le champ de vision de la caméra en degrés. Par défaut, il est défini à <code>40.0</code>.</li></ul> <h2 id="exemple-de-configuration"><a href="#exemple-de-configuration" class="header-anchor">#</a> Exemple de configuration</h2> <p>Voici un exemple de configuration de la caméra :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">camera</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    aspectRatio = 1.0;
+    lookFrom = <span class="token punctuation">{</span> x = 278.0; y = 278.0; z = <span class="token punctuation">-</span>800.0; <span class="token punctuation">}</span>;
+    lookAt = <span class="token punctuation">{</span> x = 278.0; y = 278.0; z = 0.0; <span class="token punctuation">}</span>;
+    fov = 40.0;
+<span class="token punctuation">}</span>;
+</code></pre></div><p>N'hésitez pas à ajuster ces valeurs en fonction de vos besoins.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/image.html" class="prev">
+        Configuration de l'image
+      </a></span> <span class="next"><a href="/guide/textures.html">
+        Configuration des textures
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.96ee69fa.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/8.7a6cbfc6.js" defer></script>
+  </body>
+</html>

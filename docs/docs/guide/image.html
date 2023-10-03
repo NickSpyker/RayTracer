@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Configuration de l&#39;image | Raytracer Docs</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="make image with raytracer in cpp">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.1a8e0fbc.css" as="style"><link rel="preload" href="/assets/js/app.eb50bc5c.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/9.4c20b487.js" as="script"><link rel="prefetch" href="/assets/js/10.c905a264.js"><link rel="prefetch" href="/assets/js/11.ca1e45b9.js"><link rel="prefetch" href="/assets/js/12.e779118f.js"><link rel="prefetch" href="/assets/js/13.05058aa9.js"><link rel="prefetch" href="/assets/js/3.7c0fc0d6.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.2d0a63f8.js"><link rel="prefetch" href="/assets/js/7.75c9fb29.js"><link rel="prefetch" href="/assets/js/8.6245a934.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1a8e0fbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Raytracer Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/image.html" aria-current="page" class="active sidebar-link">Configuration de l'image</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/image.html#proprietes-de-l-image" class="sidebar-link">Propriétés de l'image</a></li><li class="sidebar-sub-header"><a href="/guide/image.html#exemple-de-configuration" class="sidebar-link">Exemple de configuration</a></li></ul></li><li><a href="/guide/camera.html" class="sidebar-link">Configuration de la caméra</a></li><li><a href="/guide/textures.html" class="sidebar-link">Configuration des textures</a></li><li><a href="/guide/materials.html" class="sidebar-link">Configuration des matériaux</a></li><li><a href="/guide/primitives.html" class="sidebar-link">Configuration de la scène (Primitives)</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="configuration-de-l-image"><a href="#configuration-de-l-image" class="header-anchor">#</a> Configuration de l'image</h1> <p>Pour créer une image avec votre raytracer, vous devez configurer ses propriétés dans un fichier de configuration. Les propriétés de l'image incluent sa hauteur, sa largeur, sa profondeur, le nombre d'échantillons par pixel et la couleur de fond.</p> <p>Le format de fichier de configuration est simple : il s'agit d'un fichier texte avec des paires clé-valeur. La clé est le nom de la propriété et la valeur est sa valeur. Voici un exemple de configuration pour l'image :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">image</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    height = 300;
+    width = 300;
+    depth = 100;
+    samplesPerPixel = 50;
+    backgroundColor = <span class="token punctuation">{</span> r = 0.0; g = 0.0; b = 0.0; <span class="token punctuation">}</span>;
+<span class="token punctuation">}</span>
+</code></pre></div><p>Dans cet exemple, l'image a une hauteur de 300 pixels, une largeur de 300 pixels et une profondeur de 100. Le nombre d'échantillons par pixel est de 50 et la couleur de fond est noire.</p> <h2 id="proprietes-de-l-image"><a href="#proprietes-de-l-image" class="header-anchor">#</a> Propriétés de l'image</h2> <p>Voici la signification des propriétés de l'image :</p> <ul><li><code>height</code> : la hauteur de l'image en pixels.</li> <li><code>width</code> : la largeur de l'image en pixels.</li> <li><code>depth</code> : la profondeur de l'image, utilisée pour les images en 3D.</li> <li><code>samplesPerPixel</code> : le nombre d'échantillons par pixel. Plus ce nombre est élevé, plus l'image sera précise mais le temps de rendu sera plus long.</li> <li><code>backgroundColor</code> : la couleur de fond de l'image. Cette propriété est un objet avec trois propriétés : <code>r</code>, <code>g</code> et <code>b</code>, qui définissent les composantes rouge, verte et bleue de la couleur.</li></ul> <h2 id="exemple-de-configuration"><a href="#exemple-de-configuration" class="header-anchor">#</a> Exemple de configuration</h2> <p>Voici un exemple de configuration pour une image en 3D avec une hauteur de 600 pixels, une largeur de 800 pixels, une profondeur de 200, 100 échantillons par pixel et un fond blanc :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">image</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    height = 600;
+    width = 800;
+    depth = 200;
+    samplesPerPixel = 100;
+    backgroundColor = <span class="token punctuation">{</span> r = 1.0; g = 1.0; b = 1.0; <span class="token punctuation">}</span>;
+<span class="token punctuation">}</span>
+</code></pre></div><p>N'hésitez pas à ajuster ces valeurs en fonction de vos besoins.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/guide/camera.html">
+        Configuration de la caméra
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.eb50bc5c.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/9.4c20b487.js" defer></script>
+  </body>
+</html>

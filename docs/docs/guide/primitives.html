@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Configuration de la scène (Primitives) | Raytracer Docs</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="make image with raytracer in cpp">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.1a8e0fbc.css" as="style"><link rel="preload" href="/assets/js/app.eb50bc5c.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/11.ca1e45b9.js" as="script"><link rel="prefetch" href="/assets/js/10.c905a264.js"><link rel="prefetch" href="/assets/js/12.e779118f.js"><link rel="prefetch" href="/assets/js/13.05058aa9.js"><link rel="prefetch" href="/assets/js/3.7c0fc0d6.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.2d0a63f8.js"><link rel="prefetch" href="/assets/js/7.75c9fb29.js"><link rel="prefetch" href="/assets/js/8.6245a934.js"><link rel="prefetch" href="/assets/js/9.4c20b487.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1a8e0fbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Raytracer Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/image.html" class="sidebar-link">Configuration de l'image</a></li><li><a href="/guide/camera.html" class="sidebar-link">Configuration de la caméra</a></li><li><a href="/guide/textures.html" class="sidebar-link">Configuration des textures</a></li><li><a href="/guide/materials.html" class="sidebar-link">Configuration des matériaux</a></li><li><a href="/guide/primitives.html" aria-current="page" class="active sidebar-link">Configuration de la scène (Primitives)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/primitives.html#spheres" class="sidebar-link">Sphères</a></li><li class="sidebar-sub-header"><a href="/guide/primitives.html#plans" class="sidebar-link">Plans</a></li><li class="sidebar-sub-header"><a href="/guide/primitives.html#boites" class="sidebar-link">Boîtes</a></li><li class="sidebar-sub-header"><a href="/guide/primitives.html#cones" class="sidebar-link">Cônes</a></li><li class="sidebar-sub-header"><a href="/guide/primitives.html#cylindres" class="sidebar-link">Cylindres</a></li><li class="sidebar-sub-header"><a href="/guide/primitives.html#exemples-de-scenes" class="sidebar-link">Exemples de scènes</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="configuration-de-la-scene-primitives"><a href="#configuration-de-la-scene-primitives" class="header-anchor">#</a> Configuration de la scène (Primitives)</h1> <p>Les primitives de la scène sont définies dans la section <code>primitives</code>. Vous pouvez définir des sphères, des plans, des boîtes, des cônes et des cylindres dans cette section. Chaque primitive est définie dans une liste de primitives qui contient toutes les instances de cette primitive dans la scène. Par exemple, la liste <code>spheres</code> contient toutes les sphères dans la scène.</p> <p>Les propriétés de chaque primitive sont définies dans une liste de paires clé-valeur. La clé est le nom de la propriété et la valeur est la valeur de la propriété. Voici les propriétés pour chaque primitive :</p> <h2 id="spheres"><a href="#spheres" class="header-anchor">#</a> Sphères</h2> <p>Les sphères sont définies avec les propriétés suivantes :</p> <ul><li><code>position</code> : un triplet de nombres flottants définissant la position de la sphère dans l'espace. Exemple : <code>position = { x = 350.0; y = 380.0; z = 350.0; }</code>.</li> <li><code>radius</code> : un nombre flottant définissant le rayon de la sphère. Exemple : <code>radius = 50.0</code>.</li> <li><code>material</code> : le nom du matériau de la sphère. Exemple : <code>material = &quot;perle&quot;</code>.</li></ul> <p>Voici un exemple de définition de sphères dans le fichier de configuration :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">spheres</span><span class="token punctuation">:</span> (
+    <span class="token punctuation">{</span>
+        position = <span class="token punctuation">{</span> x = 350.0; y = 380.0; z = 350.0; <span class="token punctuation">}</span>;
+        radius = 50.0;
+        material = &quot;perle&quot;;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        position = <span class="token punctuation">{</span> x = 195.0; y = 240.0; z = 175.0; <span class="token punctuation">}</span>;
+        radius = 75.0;
+        material = &quot;blue metal&quot;;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        position = <span class="token punctuation">{</span> x = 410.0; y = 100.0; z = 075.0; <span class="token punctuation">}</span>;
+        radius = 100.0;
+        material = &quot;glass&quot;;
+    <span class="token punctuation">}</span>
+);
+</code></pre></div><h2 id="plans"><a href="#plans" class="header-anchor">#</a> Plans</h2> <p>Les plans sont définis avec les propriétés suivantes :</p> <ul><li><code>point1</code> et <code>point2</code> : deux triplets de nombres flottants définissant deux points sur le plan. Exemple : <code>point1 = { x = 555.0; y = 0.0; z = 0.0; }; point2 = { x = 555.0; y = 555.0; z = 555.0; }</code>.</li> <li><code>material</code> : le nom du matériau du plan. Exemple : <code>material = &quot;green&quot;</code>.</li></ul> <p>Voici un exemple de définition de plans dans le fichier de configuration :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">planes</span><span class="token punctuation">:</span> (
+    <span class="token punctuation">{</span>
+        point1 = <span class="token punctuation">{</span> x = 555.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+        point2 = <span class="token punctuation">{</span> x = 555.0; y = 555.0; z = 555.0; <span class="token punctuation">}</span>;
+        material = &quot;green&quot;;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+        point2 = <span class="token punctuation">{</span> x = 0.0; y = 555.0; z = 555.0; <span class="token punctuation">}</span>;
+        material = &quot;red&quot;;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        point1 = <span class="token punctuation">{</span> x = 213.0; y = 554.0; z = 227.0; <span class="token punctuation">}</span>;
+        point2 = <span class="token punctuation">{</span> x = 343.0; y = 554.0; z = 332.0; <span class="token punctuation">}</span>;
+        material = &quot;light&quot;;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+        point2 = <span class="token punctuation">{</span> x = 555.0; y = 0.0; z = 555.0; <span class="token punctuation">}</span>;
+        material = &quot;white&quot;;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        point1 = <span class="token punctuation">{</span> x = 0.0; y = 555.0; z = 0.0; <span class="token punctuation">}</span>;
+        point2 = <span class="token punctuation">{</span> x = 555.0; y = 555.0; z = 555.0; <span class="token punctuation">}</span>;
+        material = &quot;white&quot;;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 555.0; <span class="token punctuation">}</span>;
+        point2 = <span class="token punctuation">{</span> x = 555.0; y = 555.0; z = 555.0; <span class="token punctuation">}</span>;
+        material = &quot;white&quot;;
+    <span class="token punctuation">}</span>
+);
+</code></pre></div><h2 id="boites"><a href="#boites" class="header-anchor">#</a> Boîtes</h2> <p>Les boîtes sont définies avec les propriétés suivantes :</p> <ul><li><code>point1</code> et <code>point2</code> : deux triplets de nombres flottants définissant deux points sur la boîte. Exemple : <code>point1 = { x = 0.0; y = 0.0; z = 0.0; }; point2 = { x = 555.0; y = 555.0; z = 555.0; }</code>.</li> <li><code>material</code> : le nom du matériau de la boîte. Exemple : <code>material = &quot;white&quot;</code>.</li> <li><code>translate</code> : un triplet de nombres flottants définissant la translation de la boîte. Exemple : <code>translate = { x = 265.0; y = 0.0; z = 295.0; }</code>.</li></ul> <p>Voici un exemple de définition de boîtes dans le fichier de configuration :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">boxes</span><span class="token punctuation">:</span> (
+    <span class="token punctuation">{</span>
+        point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+        point2 = <span class="token punctuation">{</span> x = 165.0; y = 330.0; z = 165.0; <span class="token punctuation">}</span>;
+        material = &quot;white&quot;;
+        rotateY = 15.0;
+        translate = <span class="token punctuation">{</span> x = 265.0; y = 0.0; z = 295.0; <span class="token punctuation">}</span>;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+        point2 = <span class="token punctuation">{</span> x = 165.0; y = 165.0; z = 165.0; <span class="token punctuation">}</span>;
+        material = &quot;white&quot;;
+        rotateY = <span class="token punctuation">-</span>18.0;
+        translate = <span class="token punctuation">{</span> x = 130.0; y = 0.0; z = 65.0; <span class="token punctuation">}</span>;
+    <span class="token punctuation">}</span>
+);
+</code></pre></div><h2 id="cones"><a href="#cones" class="header-anchor">#</a> Cônes</h2> <p>Les cônes sont définis avec les propriétés suivantes :</p> <ul><li><code>position</code> : un triplet de nombres flottants définissant la position du cône dans l'espace. Exemple : <code>position = { x = 350.0; y = 380.0; z = 350.0; }</code>.</li> <li><code>radius</code> : un nombre flottant définissant le rayon du cône. Exemple : <code>radius = 50.0</code>.</li> <li><code>height</code> : un nombre flottant définissant la hauteur du cône. Exemple : <code>height = 100.0</code>.</li> <li><code>material</code> : le nom du matériau du cône. Exemple : <code>material = &quot;perle&quot;</code>.</li></ul> <p>Voici un exemple de définition de cônes dans le fichier de configuration :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">cones</span><span class="token punctuation">:</span> (
+    <span class="token punctuation">{</span>
+        position = <span class="token punctuation">{</span> x = 400.0; y = 0.0; z = 400.0; <span class="token punctuation">}</span>;
+        radius = 100.0;
+        height = 300.0;
+        material = &quot;blue metal&quot;;
+    <span class="token punctuation">}</span>
+);
+</code></pre></div><h2 id="cylindres"><a href="#cylindres" class="header-anchor">#</a> Cylindres</h2> <p>Les cylindres sont définis avec les propriétés suivantes :</p> <ul><li><code>position</code> : un triplet de nombres flottants définissant la position du cylindre dans l'espace. Exemple : <code>position = { x = 350.0; y = 380.0; z = 350.0; }</code>.</li> <li><code>radius</code> : un nombre flottant définissant le rayon du cylindre. Exemple : <code>radius = 50.0</code>.</li> <li><code>height</code> : un nombre flottant définissant la hauteur du cylindre. Exemple : <code>height = 100.0</code>.</li> <li><code>material</code> : le nom du matériau du cylindre. Exemple : <code>material = &quot;perle&quot;</code>.</li></ul> <p>Voici un exemple de définition de cylindres dans le fichier de configuration :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">cylinders</span><span class="token punctuation">:</span> (
+    <span class="token punctuation">{</span>
+        position = <span class="token punctuation">{</span> x = 100.0; y = 0.0; z = 100.0; <span class="token punctuation">}</span>;
+        radius = 100.0;
+        height = 300.0;
+        material = &quot;green&quot;;
+    <span class="token punctuation">}</span>
+);
+</code></pre></div><h2 id="exemples-de-scenes"><a href="#exemples-de-scenes" class="header-anchor">#</a> Exemples de scènes</h2> <p>Voici un exemple de scène avec toutes les propriétés citées ci-dessus :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">primitives</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    <span class="token comment"># List of spheres</span>
+    <span class="token key atrule">spheres</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            position = <span class="token punctuation">{</span> x = 350.0; y = 380.0; z = 350.0; <span class="token punctuation">}</span>;
+            radius = 50.0;
+            material = &quot;perle&quot;;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            position = <span class="token punctuation">{</span> x = 195.0; y = 240.0; z = 175.0; <span class="token punctuation">}</span>;
+            radius = 75.0;
+            material = &quot;blue metal&quot;;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            position = <span class="token punctuation">{</span> x = 410.0; y = 100.0; z = 075.0; <span class="token punctuation">}</span>;
+            radius = 100.0;
+            material = &quot;glass&quot;;
+        <span class="token punctuation">}</span>
+    );
+
+    <span class="token comment"># List of planes</span>
+    <span class="token key atrule">planes</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            point1 = <span class="token punctuation">{</span> x = 555.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+            point2 = <span class="token punctuation">{</span> x = 555.0; y = 555.0; z = 555.0; <span class="token punctuation">}</span>;
+            material = &quot;green&quot;;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+            point2 = <span class="token punctuation">{</span> x = 0.0; y = 555.0; z = 555.0; <span class="token punctuation">}</span>;
+            material = &quot;red&quot;;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            point1 = <span class="token punctuation">{</span> x = 213.0; y = 554.0; z = 227.0; <span class="token punctuation">}</span>;
+            point2 = <span class="token punctuation">{</span> x = 343.0; y = 554.0; z = 332.0; <span class="token punctuation">}</span>;
+            material = &quot;light&quot;;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+            point2 = <span class="token punctuation">{</span> x = 555.0; y = 0.0; z = 555.0; <span class="token punctuation">}</span>;
+            material = &quot;white&quot;;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            point1 = <span class="token punctuation">{</span> x = 0.0; y = 555.0; z = 0.0; <span class="token punctuation">}</span>;
+            point2 = <span class="token punctuation">{</span> x = 555.0; y = 555.0; z = 555.0; <span class="token punctuation">}</span>;
+            material = &quot;white&quot;;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 555.0; <span class="token punctuation">}</span>;
+            point2 = <span class="token punctuation">{</span> x = 555.0; y = 555.0; z = 555.0; <span class="token punctuation">}</span>;
+            material = &quot;white&quot;;
+        <span class="token punctuation">}</span>
+    );
+
+    <span class="token comment"># List of boxes</span>
+    <span class="token key atrule">boxes</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+            point2 = <span class="token punctuation">{</span> x = 165.0; y = 330.0; z = 165.0; <span class="token punctuation">}</span>;
+            material = &quot;white&quot;;
+            rotateY = 15.0;
+            translate = <span class="token punctuation">{</span> x = 265.0; y = 0.0; z = 295.0; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            point1 = <span class="token punctuation">{</span> x = 0.0; y = 0.0; z = 0.0; <span class="token punctuation">}</span>;
+            point2 = <span class="token punctuation">{</span> x = 165.0; y = 165.0; z = 165.0; <span class="token punctuation">}</span>;
+            material = &quot;white&quot;;
+            rotateY = <span class="token punctuation">-</span>18.0;
+            translate = <span class="token punctuation">{</span> x = 130.0; y = 0.0; z = 65.0; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span>
+    );
+
+    <span class="token comment"># List of cones</span>
+    <span class="token key atrule">cones</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            position = <span class="token punctuation">{</span> x = 400.0; y = 0.0; z = 400.0; <span class="token punctuation">}</span>;
+            radius = 100.0;
+            height = 300.0;
+            material = &quot;blue metal&quot;;
+        <span class="token punctuation">}</span>
+    );
+
+    <span class="token comment"># List of cylinders</span>
+    <span class="token key atrule">cylinders</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            position = <span class="token punctuation">{</span> x = 100.0; y = 0.0; z = 100.0; <span class="token punctuation">}</span>;
+            radius = 100.0;
+            height = 300.0;
+            material = &quot;green&quot;;
+        <span class="token punctuation">}</span>
+    );
+<span class="token punctuation">}</span>;
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/materials.html" class="prev">
+        Configuration des matériaux
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.eb50bc5c.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/11.ca1e45b9.js" defer></script>
+  </body>
+</html>

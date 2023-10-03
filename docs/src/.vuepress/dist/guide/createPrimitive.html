@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Création d&#39;un objet primitif | Raytracer Docs</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="make image with raytracer in cpp">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.1a8e0fbc.css" as="style"><link rel="preload" href="/assets/js/app.96ee69fa.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/9.ef5a4316.js" as="script"><link rel="prefetch" href="/assets/js/10.d4b00fef.js"><link rel="prefetch" href="/assets/js/11.ab927e94.js"><link rel="prefetch" href="/assets/js/12.9f856f5c.js"><link rel="prefetch" href="/assets/js/13.17f845f1.js"><link rel="prefetch" href="/assets/js/14.b4028389.js"><link rel="prefetch" href="/assets/js/3.29ddc053.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.2d0a63f8.js"><link rel="prefetch" href="/assets/js/7.75c9fb29.js"><link rel="prefetch" href="/assets/js/8.7a6cbfc6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1a8e0fbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Raytracer Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/image.html" class="sidebar-link">Configuration de l'image</a></li><li><a href="/guide/camera.html" class="sidebar-link">Configuration de la caméra</a></li><li><a href="/guide/textures.html" class="sidebar-link">Configuration des textures</a></li><li><a href="/guide/materials.html" class="sidebar-link">Configuration des matériaux</a></li><li><a href="/guide/primitives.html" class="sidebar-link">Configuration de la scène (Primitives)</a></li><li><a href="/guide/createPrimitive.html" aria-current="page" class="active sidebar-link">Création d'un objet primitif</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/createPrimitive.html#introduction" class="sidebar-link">Introduction</a></li><li class="sidebar-sub-header"><a href="/guide/createPrimitive.html#prerequis" class="sidebar-link">Prérequis</a></li><li class="sidebar-sub-header"><a href="/guide/createPrimitive.html#etape-1-inclure-les-fichiers-d-en-tete" class="sidebar-link">Étape 1 : Inclure les fichiers d'en-tête</a></li><li class="sidebar-sub-header"><a href="/guide/createPrimitive.html#etape-2-implementation-d-un-objet-primitif" class="sidebar-link">Étape 2 : Implémentation d'un objet primitif</a></li><li class="sidebar-sub-header"><a href="/guide/createPrimitive.html#conclusion" class="sidebar-link">Conclusion</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="introduction"><a href="#introduction" class="header-anchor">#</a> Introduction</h2> <p>Dans ce tutoriel, nous allons apprendre comment créer un objet primitif dans une scène en utilisant le code fourni.</p> <h2 id="prerequis"><a href="#prerequis" class="header-anchor">#</a> Prérequis</h2> <p>Pour suivre ce tutoriel, vous devez avoir une compréhension de base du langage C++ et des concepts du Ray Tracing.</p> <h2 id="etape-1-inclure-les-fichiers-d-en-tete"><a href="#etape-1-inclure-les-fichiers-d-en-tete" class="header-anchor">#</a> Étape 1 : Inclure les fichiers d'en-tête</h2> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">HITTABLE_HPP</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HITTABLE_HPP</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sstream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&quot;Ray.hpp&quot;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;memory&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&quot;AxisAlignedBoundingBox.hpp&quot;</span></span>
+
+<span class="token comment">// ...</span>
+</code></pre></div><p>Le bloc de code ci-dessus inclut les fichiers d'en-tête nécessaires et définit la classe <code>Hittable</code>, la structure <code>HitRecord</code> et d'autres entités requises.</p> <h2 id="etape-2-implementation-d-un-objet-primitif"><a href="#etape-2-implementation-d-un-objet-primitif" class="header-anchor">#</a> Étape 2 : Implémentation d'un objet primitif</h2> <p>Pour créer un objet primitif, vous devez définir une classe qui hérite de la classe <code>Hittable</code>. Voici un exemple d'implémentation :</p> <div class="language-cpp extra-class"><pre class="language-cpp"><code><span class="token keyword">class</span> <span class="token class-name">Sphere</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Hittable</span></span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Sphere</span><span class="token punctuation">(</span><span class="token keyword">const</span> Math<span class="token double-colon punctuation">::</span>Point3D<span class="token operator">&amp;</span> centre<span class="token punctuation">,</span> <span class="token keyword">double</span> rayon<span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span>shared_ptr<span class="token operator">&lt;</span>Material<span class="token operator">&gt;</span> materiau<span class="token punctuation">)</span>
+    <span class="token operator">:</span> <span class="token function">_centre</span><span class="token punctuation">(</span>centre<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">_rayon</span><span class="token punctuation">(</span>rayon<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">_materiau</span><span class="token punctuation">(</span>materiau<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token keyword">bool</span> <span class="token function">hit</span><span class="token punctuation">(</span><span class="token keyword">const</span> Ray<span class="token operator">&amp;</span> rayon<span class="token punctuation">,</span> <span class="token keyword">double</span> tMin<span class="token punctuation">,</span> <span class="token keyword">double</span> tMax<span class="token punctuation">,</span> HitRecord<span class="token operator">&amp;</span> rec<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Détails de l'implémentation pour l'intersection rayon-sphère</span>
+
+    <span class="token comment">// ...</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">bool</span> <span class="token function">boundingBox</span><span class="token punctuation">(</span><span class="token keyword">double</span> t0<span class="token punctuation">,</span> <span class="token keyword">double</span> t1<span class="token punctuation">,</span> AxisAlignedBBox<span class="token operator">&amp;</span> boiteSortie<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Détails de l'implémentation pour le calcul de la boîte englobante</span>
+
+    <span class="token comment">// ...</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>La classe <code>Sphere</code> représente un objet primitif sphérique. Elle substitue les méthodes <code>hit</code> et <code>boundingBox</code> de la classe <code>Hittable</code> pour fournir l'implémentation nécessaire.</p> <h2 id="conclusion"><a href="#conclusion" class="header-anchor">#</a> Conclusion</h2> <p>Dans ce tutoriel, nous avons appris comment créer un objet primitif, en particulier une sphère, dans une scène en utilisant le code fourni. Vous pouvez étendre ce concept pour créer d'autres objets primitifs tels que des plans, des boîtes ou des cylindres.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/primitives.html" class="prev">
+        Configuration de la scène (Primitives)
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.96ee69fa.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/9.ef5a4316.js" defer></script>
+  </body>
+</html>

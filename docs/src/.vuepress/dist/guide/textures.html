@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Configuration des textures | Raytracer Docs</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="make image with raytracer in cpp">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.1a8e0fbc.css" as="style"><link rel="preload" href="/assets/js/app.96ee69fa.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/13.17f845f1.js" as="script"><link rel="prefetch" href="/assets/js/10.d4b00fef.js"><link rel="prefetch" href="/assets/js/11.ab927e94.js"><link rel="prefetch" href="/assets/js/12.9f856f5c.js"><link rel="prefetch" href="/assets/js/14.b4028389.js"><link rel="prefetch" href="/assets/js/3.29ddc053.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.2d0a63f8.js"><link rel="prefetch" href="/assets/js/7.75c9fb29.js"><link rel="prefetch" href="/assets/js/8.7a6cbfc6.js"><link rel="prefetch" href="/assets/js/9.ef5a4316.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1a8e0fbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Raytracer Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/image.html" class="sidebar-link">Configuration de l'image</a></li><li><a href="/guide/camera.html" class="sidebar-link">Configuration de la caméra</a></li><li><a href="/guide/textures.html" aria-current="page" class="active sidebar-link">Configuration des textures</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/textures.html#texture-noise" class="sidebar-link">Texture &quot;noise&quot;</a></li><li class="sidebar-sub-header"><a href="/guide/textures.html#texture-solidcolor" class="sidebar-link">Texture &quot;solidColor&quot;</a></li><li class="sidebar-sub-header"><a href="/guide/textures.html#texture-chessboard" class="sidebar-link">Texture &quot;chessboard&quot;</a></li><li class="sidebar-sub-header"><a href="/guide/textures.html#exemple-de-configuration" class="sidebar-link">Exemple de configuration</a></li></ul></li><li><a href="/guide/materials.html" class="sidebar-link">Configuration des matériaux</a></li><li><a href="/guide/primitives.html" class="sidebar-link">Configuration de la scène (Primitives)</a></li><li><a href="/guide/createPrimitive.html" class="sidebar-link">Création d'un objet primitif</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="configuration-des-textures"><a href="#configuration-des-textures" class="header-anchor">#</a> Configuration des textures</h1> <p>La configuration des textures dans le raytracer se fait via la section &quot;textures&quot; du fichier de configuration. Cette section permet de définir différentes textures avec leurs propriétés.</p> <h2 id="texture-noise"><a href="#texture-noise" class="header-anchor">#</a> Texture &quot;noise&quot;</h2> <p>La texture &quot;noise&quot; permet d'ajouter du bruit à une surface. Elle possède une propriété &quot;scale&quot; qui détermine l'échelle du bruit.</p> <p>Exemple de configuration :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">noise</span><span class="token punctuation">:</span> (
+    <span class="token punctuation">{</span>
+        name = &quot;noise&quot;;
+        scale = 2.0;
+    <span class="token punctuation">}</span>
+)<span class="token punctuation">,</span>
+</code></pre></div><h2 id="texture-solidcolor"><a href="#texture-solidcolor" class="header-anchor">#</a> Texture &quot;solidColor&quot;</h2> <p>La texture &quot;solidColor&quot; est une texture de couleur unie. Elle possède une propriété &quot;color&quot; qui détermine la couleur de la texture.</p> <p>Exemple de configuration :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">solidColor</span><span class="token punctuation">:</span> (
+    <span class="token punctuation">{</span>
+        name = &quot;solidTextureName&quot;;
+        color = <span class="token punctuation">{</span> r = 255.0; g = 255.0; b = 255.0; <span class="token punctuation">}</span>;
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        name = &quot;solidTextureName2&quot;;
+        color = <span class="token punctuation">{</span> r = 0.0; g = 0.0; b = 0.0; <span class="token punctuation">}</span>;
+    <span class="token punctuation">}</span>
+)<span class="token punctuation">,</span>
+</code></pre></div><h2 id="texture-chessboard"><a href="#texture-chessboard" class="header-anchor">#</a> Texture &quot;chessboard&quot;</h2> <p>La texture &quot;chessboard&quot; est une texture en damier. Elle peut être configurée pour être soit en noir et blanc, soit en couleur. Elle possède les propriétés suivantes :</p> <ul><li>&quot;lightTexture&quot; : le nom de la texture à utiliser pour les cases claires du damier.</li> <li>&quot;darkTexture&quot; : le nom de la texture à utiliser pour les cases sombres du damier.</li> <li>&quot;lightColor&quot; : la couleur à utiliser pour les cases claires du damier (uniquement pour la version en couleur).</li> <li>&quot;darkColor&quot; : la couleur à utiliser pour les cases sombres du damier (uniquement pour la version en couleur).</li></ul> <p>Exemple de configuration :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">chessboard</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token key atrule">textured</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;chessBoardTextureName&quot;;
+            lightTexture = &quot;solidTextureName&quot;;
+            darkTexture = &quot;solidTextureName2&quot;;
+        <span class="token punctuation">}</span>
+    )<span class="token punctuation">,</span>
+    <span class="token key atrule">colored</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;chessBoardTextureName2&quot;;
+            lightColor = <span class="token punctuation">{</span> r = 255.0; g = 255.0; b = 255.0; <span class="token punctuation">}</span>;
+            darkColor = <span class="token punctuation">{</span> r = 0.0; g = 0.0; b = 0.0; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span>
+    )
+<span class="token punctuation">}</span>
+</code></pre></div><p>Avec ces différentes textures, il est possible de créer une grande variété de matériaux pour les objets de la scène.</p> <h2 id="exemple-de-configuration"><a href="#exemple-de-configuration" class="header-anchor">#</a> Exemple de configuration</h2> <p>Voici un exemple de configuration pour une texture &quot;noise&quot; avec une échelle de 2.0, une texture &quot;solidColor&quot; blanche et une texture &quot;chessboard&quot; en noir et blanc :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">textures</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    <span class="token key atrule">noise</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;noise&quot;;
+            scale = 2.0;
+        <span class="token punctuation">}</span>
+    )<span class="token punctuation">,</span>
+    <span class="token key atrule">solidColor</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;solidTextureName&quot;;tu 
+            color = <span class="token punctuation">{</span> r = 255.0; g = 255.0; b = 255.0; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            name = &quot;solidTextureName2&quot;;
+            color = <span class="token punctuation">{</span> r = 0.0; g = 0.0; b = 0.0; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span>
+    )<span class="token punctuation">,</span>
+    <span class="token key atrule">chessboard</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token key atrule">textured</span><span class="token punctuation">:</span> (
+            <span class="token punctuation">{</span>
+                name = &quot;chessBoardTextureName&quot;;
+                lightTexture = &quot;solidTextureName&quot;;
+                darkTexture = &quot;solidTextureName2&quot;;
+            <span class="token punctuation">}</span>
+        )<span class="token punctuation">,</span>
+        <span class="token key atrule">colored</span><span class="token punctuation">:</span> (
+            <span class="token punctuation">{</span>
+                name = &quot;chessBoardTextureName2&quot;;
+                lightColor = <span class="token punctuation">{</span> r = 255.0; g = 255.0; b = 255.0; <span class="token punctuation">}</span>;
+                darkColor = <span class="token punctuation">{</span> r = 0.0; g = 0.0; b = 0.0; <span class="token punctuation">}</span>;
+            <span class="token punctuation">}</span>
+        )
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>N'hésitez pas à ajuster ces valeurs en fonction de vos besoins.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/camera.html" class="prev">
+        Configuration de la caméra
+      </a></span> <span class="next"><a href="/guide/materials.html">
+        Configuration des matériaux
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.96ee69fa.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/13.17f845f1.js" defer></script>
+  </body>
+</html>

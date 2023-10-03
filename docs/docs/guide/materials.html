@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Configuration des matériaux | Raytracer Docs</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="make image with raytracer in cpp">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.1a8e0fbc.css" as="style"><link rel="preload" href="/assets/js/app.eb50bc5c.js" as="script"><link rel="preload" href="/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/assets/js/10.c905a264.js" as="script"><link rel="prefetch" href="/assets/js/11.ca1e45b9.js"><link rel="prefetch" href="/assets/js/12.e779118f.js"><link rel="prefetch" href="/assets/js/13.05058aa9.js"><link rel="prefetch" href="/assets/js/3.7c0fc0d6.js"><link rel="prefetch" href="/assets/js/4.d12742be.js"><link rel="prefetch" href="/assets/js/5.216cae74.js"><link rel="prefetch" href="/assets/js/6.2d0a63f8.js"><link rel="prefetch" href="/assets/js/7.75c9fb29.js"><link rel="prefetch" href="/assets/js/8.6245a934.js"><link rel="prefetch" href="/assets/js/9.4c20b487.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1a8e0fbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Raytracer Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Guide
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/image.html" class="sidebar-link">Configuration de l'image</a></li><li><a href="/guide/camera.html" class="sidebar-link">Configuration de la caméra</a></li><li><a href="/guide/textures.html" class="sidebar-link">Configuration des textures</a></li><li><a href="/guide/materials.html" aria-current="page" class="active sidebar-link">Configuration des matériaux</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/materials.html#materiaux-directionnels" class="sidebar-link">Matériaux directionnels</a></li><li class="sidebar-sub-header"><a href="/guide/materials.html#materiaux-en-verre" class="sidebar-link">Matériaux en verre</a></li><li class="sidebar-sub-header"><a href="/guide/materials.html#materiaux-metalliques" class="sidebar-link">Matériaux métalliques</a></li><li class="sidebar-sub-header"><a href="/guide/materials.html#materiaux-solides" class="sidebar-link">Matériaux solides</a></li><li class="sidebar-sub-header"><a href="/guide/materials.html#exemple-de-configuration" class="sidebar-link">Exemple de configuration</a></li></ul></li><li><a href="/guide/primitives.html" class="sidebar-link">Configuration de la scène (Primitives)</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="configuration-des-materiaux"><a href="#configuration-des-materiaux" class="header-anchor">#</a> Configuration des matériaux</h1> <p>Les matériaux définissent la façon dont les surfaces apparaissent dans la scène, en définissant comment la lumière est réfléchie, réfractée, absorbée ou diffusée. Dans cette section, nous vous montrerons comment configurer les différents types de matériaux dans votre projet de raytracing.</p> <h2 id="materiaux-directionnels"><a href="#materiaux-directionnels" class="header-anchor">#</a> Matériaux directionnels</h2> <p>Les matériaux directionnels définissent la lumière qui est réfléchie dans une direction spécifique. Vous pouvez configurer un matériau directionnel en définissant sa couleur ou en lui ajoutant une texture. Voici un exemple de configuration pour un matériau directionnel :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">directionalLight</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    <span class="token key atrule">textured</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;directionalLightMaterialName&quot;;
+            texture = &quot;chessBoardTextureName&quot;;
+        <span class="token punctuation">}</span>
+    )<span class="token punctuation">,</span>
+    <span class="token key atrule">colored</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;light&quot;;
+            color = <span class="token punctuation">{</span> r = 15.0; g = 15.0; b = 15.0; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span>
+    )
+<span class="token punctuation">}</span>
+</code></pre></div><p>Dans cet exemple, nous avons défini un matériau directionnel avec une texture d'échiquier nommée &quot;chessBoardTextureName&quot;. Si vous voulez définir une couleur pour votre matériau directionnel, vous pouvez utiliser la propriété <code>colored</code> et définir une couleur RVB.</p> <h2 id="materiaux-en-verre"><a href="#materiaux-en-verre" class="header-anchor">#</a> Matériaux en verre</h2> <p>Les matériaux en verre définissent la façon dont la lumière est réfractée lorsqu'elle traverse un objet transparent. Vous pouvez configurer un matériau en verre en définissant son indice de réfraction. Voici un exemple de configuration pour un matériau en verre :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">glass</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    name = &quot;glass&quot;;
+    refraction = 1.5;
+<span class="token punctuation">}</span>
+</code></pre></div><p>Dans cet exemple, nous avons défini un matériau en verre avec un indice de réfraction de 1,5.</p> <h2 id="materiaux-metalliques"><a href="#materiaux-metalliques" class="header-anchor">#</a> Matériaux métalliques</h2> <p>Les matériaux métalliques définissent la façon dont la lumière est réfléchie sur une surface métallique. Vous pouvez configurer un matériau métallique en définissant sa couleur et sa valeur de flou. Voici un exemple de configuration pour un matériau métallique :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">metal</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    name = &quot;blue metal&quot;;
+    color = <span class="token punctuation">{</span> r = 0.2; g = 0.4; b = 0.8; <span class="token punctuation">}</span>;
+    fuzz = 0.1;
+<span class="token punctuation">}</span>
+</code></pre></div><p>Dans cet exemple, nous avons défini un matériau métallique de couleur bleue avec une valeur de flou de 0,1.</p> <h2 id="materiaux-solides"><a href="#materiaux-solides" class="header-anchor">#</a> Matériaux solides</h2> <p>Les matériaux solides définissent la façon dont la lumière est réfléchie sur une surface non métallique. Vous pouvez configurer un matériau solide en définissant sa couleur ou en lui ajoutant une texture. Voici un exemple de configuration pour un matériau solide :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">solid</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token key atrule">textured</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;perle&quot;;
+            texture = &quot;noise&quot;;
+        <span class="token punctuation">}</span>
+    )<span class="token punctuation">,</span>
+    <span class="token key atrule">colored</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;red&quot;;
+            color = <span class="token punctuation">{</span> r = 0.65; g = 0.05; b = 0.05; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            name = &quot;white&quot;;
+            color = <span class="token punctuation">{</span> r = 0.73; g = 0.73; b = 0.73; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            name = &quot;green&quot;;
+            color = <span class="token punctuation">{</span> r = 0.12; g = 0.45; b = 0.15; <span class="token punctuation">}</span>;
+        <span class="token punctuation">}</span>
+    )
+<span class="token punctuation">}</span>
+</code></pre></div><p>Dans cet exemple, nous avons défini un matériau solide avec une texture de bruit nommée &quot;noise&quot;. Si vous voulez définir une couleur pour votre matériau solide, vous pouvez utiliser la propriété <code>colored</code> et définir une couleur RVB.</p> <h2 id="exemple-de-configuration"><a href="#exemple-de-configuration" class="header-anchor">#</a> Exemple de configuration</h2> <p>Voici un exemple de configuration de matériaux :</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">materials</span><span class="token punctuation">:</span>
+<span class="token punctuation">{</span>
+    <span class="token key atrule">directionalLight</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token key atrule">textured</span><span class="token punctuation">:</span> (
+            <span class="token punctuation">{</span>
+                name = &quot;directionalLightMaterialName&quot;;
+                texture = &quot;chessBoardTextureName&quot;;
+            <span class="token punctuation">}</span>
+        )<span class="token punctuation">,</span>
+        <span class="token key atrule">colored</span><span class="token punctuation">:</span> (
+            <span class="token punctuation">{</span>
+                name = &quot;light&quot;;
+                color = <span class="token punctuation">{</span> r = 15.0; g = 15.0; b = 15.0; <span class="token punctuation">}</span>;
+            <span class="token punctuation">}</span>
+        )
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token key atrule">glass</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;glass&quot;;
+            refraction = 1.5;
+        <span class="token punctuation">}</span>
+    )<span class="token punctuation">,</span>
+    <span class="token key atrule">metal</span><span class="token punctuation">:</span> (
+        <span class="token punctuation">{</span>
+            name = &quot;blue metal&quot;;
+            color = <span class="token punctuation">{</span> r = 0.2; g = 0.4; b = 0.8; <span class="token punctuation">}</span>;
+            fuzz = 0.1;
+        <span class="token punctuation">}</span>
+    )<span class="token punctuation">,</span>
+    <span class="token key atrule">solid</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token key atrule">textured</span><span class="token punctuation">:</span> (
+            <span class="token punctuation">{</span>
+                name = &quot;perle&quot;;
+                texture = &quot;noise&quot;;
+            <span class="token punctuation">}</span>
+        )<span class="token punctuation">,</span>
+        <span class="token key atrule">colored</span><span class="token punctuation">:</span> (
+            <span class="token punctuation">{</span>
+                name = &quot;red&quot;;
+                color = <span class="token punctuation">{</span> r = 0.65; g = 0.05; b = 0.05; <span class="token punctuation">}</span>;
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                name = &quot;white&quot;;
+                color = <span class="token punctuation">{</span> r = 0.73; g = 0.73; b = 0.73; <span class="token punctuation">}</span>;
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                name = &quot;green&quot;;
+                color = <span class="token punctuation">{</span> r = 0.12; g = 0.45; b = 0.15; <span class="token punctuation">}</span>;
+            <span class="token punctuation">}</span>
+        )
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/textures.html" class="prev">
+        Configuration des textures
+      </a></span> <span class="next"><a href="/guide/primitives.html">
+        Configuration de la scène (Primitives)
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.eb50bc5c.js" defer></script><script src="/assets/js/2.733019b2.js" defer></script><script src="/assets/js/10.c905a264.js" defer></script>
+  </body>
+</html>
