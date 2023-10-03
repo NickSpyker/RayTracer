@@ -1,5 +1,12 @@
 # Ray Tracer
 
+![scene1](output_scene1.png)
+![scene5](output_scene5.png)
+![scene6](output_scene6.png)
+![scene2](output_scene2.png)
+![scene3](output_scene3.png)
+![scene4](output_scene4.png)
+
 ## Dependencies
 **libconfig.h++:**
 ```shell
